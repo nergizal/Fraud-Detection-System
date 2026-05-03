@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.4 on darwin)" generated="2026-05-03T03:09:17.289538" rpa="false" schemaversion="5">
+<suite id="s1" name="Ui Tests" source="/Users/nergizalici/fraud-detection-system/tests/ui/ui_tests.robot">
+<test id="s1-t1" name="Test Dashboard UI Elements" line="8">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-03T03:09:17.408778" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<arg>${DASHBOARD_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-03T03:09:17.408653" elapsed="2.470806"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-03T03:09:19.881501" elapsed="0.404196"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:body</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-05-03T03:09:20.285873" elapsed="0.014634"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-05-03T03:09:20.304105" level="INFO">Current page contains element 'css:body'.</msg>
+<arg>css:body</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-05-03T03:09:20.300720" elapsed="0.003450"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-05-03T03:09:20.419202" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-05-03T03:09:20.304323" elapsed="0.114955"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-03T03:09:20.419437" elapsed="0.079954"/>
+</kw>
+<doc>Dashboard sayfasının yüklenmesini bekler ve element doğrulaması yapar.</doc>
+<status status="PASS" start="2026-05-03T03:09:17.408139" elapsed="3.091543"/>
+</test>
+<status status="PASS" start="2026-05-03T03:09:17.290191" elapsed="3.209820"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ui Tests" id="s1" pass="1" fail="0" skip="0">Ui Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.11.4 on darwin)" generated="2026-05-02T22:05:56.717807" rpa="false" schemaversion="5">
+<suite id="s1" name="E2E Tests" source="/Users/nergizalici/fraud-detection-system/tests/e2e/e2e_tests.robot">
+<kw name="Initialize API Session" owner="keywords" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-05-02T22:05:56.793565" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-05-02T22:05:56.793481" elapsed="0.000177"/>
+</kw>
+<status status="PASS" start="2026-05-02T22:05:56.793222" elapsed="0.000478"/>
+</kw>
+<test id="s1-t1" name="Send Normal Transaction E2E" line="6">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.794386" level="INFO">&amp;{location} = { lat=41.0082 | lon=28.9784 }</msg>
+<var>&amp;{location}</var>
+<arg>lat=${41.0082}</arg>
+<arg>lon=${28.9784}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.793878" elapsed="0.000522"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.794841" level="INFO">&amp;{payload} = { user_id=999 | amount=250.0 | location={'lat': 41.0082, 'lon': 28.9784} }</msg>
+<var>&amp;{payload}</var>
+<arg>user_id=${999}</arg>
+<arg>amount=${250.0}</arg>
+<arg>location=${location}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.794475" elapsed="0.000379"/>
+</kw>
+<kw name="Post Request To API Endpoint" owner="keywords">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-05-02T22:05:56.835376" level="INFO">POST Request : url=http://localhost:8000/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '79', 'Content-Type': 'application/json'} 
+ body=b'{"user_id": 999, "amount": 250.0, "location": {"lat": 41.0082, "lon": 28.9784}}' 
+ </msg>
+<msg time="2026-05-02T22:05:56.835460" level="INFO">POST Response : url=http://localhost:8000/ 
+ status=200, reason=OK 
+ headers={'date': 'Sat, 02 May 2026 19:05:56 GMT', 'server': 'uvicorn', 'content-length': '42', 'content-type': 'application/json'} 
+ body={"message":"Transaction placed in queue."} 
+ </msg>
+<msg time="2026-05-02T22:05:56.835539" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${endpoint}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.795071" elapsed="0.040486"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-05-02T22:05:56.835605" elapsed="0.000034"/>
+</return>
+<msg time="2026-05-02T22:05:56.835720" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/</arg>
+<arg>${payload}</arg>
+<status status="PASS" start="2026-05-02T22:05:56.794950" elapsed="0.040782"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.836247" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.835861" elapsed="0.000424"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.836371" elapsed="0.000254"/>
+</kw>
+<status status="PASS" start="2026-05-02T22:05:56.793727" elapsed="0.042976"/>
+</test>
+<test id="s1-t2" name="Send Fraud Transaction E2E" line="14">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.837399" level="INFO">&amp;{location} = { lat=36.8841 | lon=30.7056 }</msg>
+<var>&amp;{location}</var>
+<arg>lat=${36.8841}</arg>
+<arg>lon=${30.7056}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.836968" elapsed="0.000445"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.837880" level="INFO">&amp;{payload} = { user_id=777 | amount=5000.0 | location={'lat': 36.8841, 'lon': 30.7056} }</msg>
+<var>&amp;{payload}</var>
+<arg>user_id=${777}</arg>
+<arg>amount=${5000.0}</arg>
+<arg>location=${location}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.837488" elapsed="0.000406"/>
+</kw>
+<kw name="Post Request To API Endpoint" owner="keywords">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-05-02T22:05:56.846698" level="INFO">POST Request : url=http://localhost:8000/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '80', 'Content-Type': 'application/json'} 
+ body=b'{"user_id": 777, "amount": 5000.0, "location": {"lat": 36.8841, "lon": 30.7056}}' 
+ </msg>
+<msg time="2026-05-02T22:05:56.846757" level="INFO">POST Response : url=http://localhost:8000/ 
+ status=200, reason=OK 
+ headers={'date': 'Sat, 02 May 2026 19:05:56 GMT', 'server': 'uvicorn', 'content-length': '42', 'content-type': 'application/json'} 
+ body={"message":"Transaction placed in queue."} 
+ </msg>
+<msg time="2026-05-02T22:05:56.846831" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${endpoint}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.838147" elapsed="0.008699"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-05-02T22:05:56.846886" elapsed="0.000032"/>
+</return>
+<msg time="2026-05-02T22:05:56.847007" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/</arg>
+<arg>${payload}</arg>
+<status status="PASS" start="2026-05-02T22:05:56.838011" elapsed="0.009008"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-02T22:05:56.847505" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.847143" elapsed="0.000399"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>message</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-05-02T22:05:56.847615" elapsed="0.000227"/>
+</kw>
+<status status="PASS" start="2026-05-02T22:05:56.836807" elapsed="0.011103"/>
+</test>
+<status status="PASS" start="2026-05-02T22:05:56.719583" elapsed="0.128519"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="E2E Tests" id="s1" pass="2" fail="0" skip="0">E2E Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-05-02T22:05:56.734539" level="WARN">Error in file '/Users/nergizalici/fraud-detection-system/tests/resources/keywords.robot' on line 15: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2026-05-02T22:05:56.734753" level="WARN">Error in file '/Users/nergizalici/fraud-detection-system/tests/resources/keywords.robot' on line 20: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>
