@@ -1,6 +1,7 @@
 #  Fraud Analytics Intelligence (FAI)
 
 > Real-time fraud detection system powered by microservices, asynchronous processing, and AI-driven context analysis.
+<img width="1365" height="804" alt="Ekran Resmi 2026-05-03 03 11 18" src="https://github.com/user-attachments/assets/01afb14d-8ab2-4c55-ab1a-d0223c84779a" />
 
 ---
 
@@ -20,6 +21,7 @@ FAI solves this by:
 ---
 
 ##  System Architecture
+<img width="1536" height="1024" alt="archdiagram" src="https://github.com/user-attachments/assets/31fae7c1-2fb6-44f5-aa06-1605443a21fb" />
 
 ### Components
 - API Gateway (FastAPI)
