@@ -1,6 +1,7 @@
 #  E-Ticaret Fraud Tespit ve Analiz Platformu
 
 Gerçek zamanlı işlem izleme, anomali tespiti ve yapay zeka entegrasyonuna sahip kapsamlı bir fraud tespit sistemi.
+
 <img width="1365" height="804" alt="Ekran Resmi 2026-05-03 03 11 18" src="https://github.com/user-attachments/assets/3e740ff1-1d49-44d3-82ee-c2307b27b2db" />
 
 
@@ -434,7 +435,7 @@ docker-compose logs -f
 │   │   ├── main.py          # FastAPI uygulama giriş noktası
 │   │   ├── models.py        # Veritabanı modelleri
 │   │   ├── utils.py         # Anomali tespit kuralları
-│   │   └── database.py      # PostgreSQL bağlantısı
+│   │   └── database.py      # MongoDB bağlantısı
 │   └── worker.py            # RabbitMQ consumer
 ├── mcp/
 │   └── server.py            # MCP server tanımı
@@ -471,5 +472,4 @@ docker-compose logs -f
 | FastAPI | `8000` | http://localhost:8000 |
 | API Docs (Swagger) | `8000` | http://localhost:8000/docs |
 | RabbitMQ Yönetim Paneli | `15672` | http://localhost:15672 (guest/guest) |
-| PostgreSQL | `5432` | — |
-| Redis | `6379` | — |
+
